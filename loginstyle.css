@@ -1,90 +1,302 @@
-body{
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-}
-.main{
-	width: 350px;
-	height: 500px;
-	background: red;
-	overflow: hidden;
-	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
-	border-radius: 10px;
-	box-shadow: 5px 20px 50px #000;
-}
-#chk{
-	display: none;
-}
-.signup{
-	position: relative;
-	width:100%;
-	height: 100%;
-}
-label{
-	color: #fff;
-	font-size: 2.3em;
-	justify-content: center;
-	display: flex;
-	margin: 50px;
-	font-weight: bold;
-	cursor: pointer;
-	transition: .5s ease-in-out;
-}
-input{
-	width: 60%;
-	height: 10px;
-	background: #e0dede;
-	justify-content: center;
-	display: flex;
-	margin: 20px auto;
-	padding: 12px;
-	border: none;
-	outline: none;
-	border-radius: 5px;
-}
-button{
-	width: 60%;
-	height: 40px;
-	margin: 10px auto;
-	justify-content: center;
-	display: block;
-	color: #fff;
-	background: #573b8a;
-	font-size: 1em;
-	font-weight: bold;
-	margin-top: 30px;
-	outline: none;
-	border: none;
-	border-radius: 5px;
-	transition: .2s ease-in;
-	cursor: pointer;
-}
-button:hover{
-	background: #6d44b8;
-}
-.login{
-	height: 460px;
-	background: #eee;
-	border-radius: 60% / 10%;
-	transform: translateY(-180px);
-	transition: .5s ease-in-out;
-}
-.login label{
-	color: #573b8a;
-	transform: scale(.6);
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    /* Prevent horizontal overflow */
+    overflow-x: hidden;
+    width: 100%;
 }
 
-#chk:checked ~ .login{
-	transform: translateY(-500px);
+.main {
+    width: 350px;
+    height: 500px;
+    background: red;
+    overflow: hidden;
+    background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+    /* Ensure it doesn't exceed viewport */
+    max-width: 90vw;
 }
-#chk:checked ~ .login label{
-	transform: scale(1);	
+
+#chk {
+    display: none;
 }
-#chk:checked ~ .signup label{
-	transform: scale(.6);
+
+.signup {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+label {
+    color: #fff;
+    font-size: clamp(1.5em, 5vw, 2.3em);
+    justify-content: center;
+    display: flex;
+    margin: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+
+input {
+    width: 60%;
+    height: 10px;
+    background: #e0dede;
+    justify-content: center;
+    display: flex;
+    margin: 20px auto;
+    padding: 12px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    /* Ensure inputs don't overflow */
+    max-width: calc(100% - 40px);
+}
+
+button {
+    width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #573b8a;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+    /* Touch-friendly tap target */
+    min-height: 44px;
+    max-width: calc(100% - 40px);
+}
+
+button:hover {
+    background: #6d44b8;
+}
+
+.login {
+    height: 460px;
+    background: #eee;
+    border-radius: 60% / 10%;
+    transform: translateY(-180px);
+    transition: .5s ease-in-out;
+}
+
+.login label {
+    color: #573b8a;
+    transform: scale(.6);
+}
+
+#chk:checked ~ .login {
+    transform: translateY(-500px);
+}
+
+#chk:checked ~ .login label {
+    transform: scale(1);
+}
+
+#chk:checked ~ .signup label {
+    transform: scale(.6);
+}
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+
+/* Extra Small Mobile (max-width: 479px) */
+@media screen and (max-width: 479px) {
+    body {
+        padding: 10px;
+    }
+
+    .main {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 100vw;
+    }
+
+    .signup,
+    .login {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        background: #fff;
+        border-radius: 0;
+        transform: none;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    #chk:checked ~ .login {
+        transform: none;
+    }
+
+    label {
+        margin: 20px 10px;
+        font-size: 1.8em;
+    }
+
+    input,
+    button {
+        width: 90%;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .signup {
+        background: linear-gradient(to bottom, #0f0c29, #302b63);
+    }
+
+    .login {
+        background: #fff;
+    }
+
+    .login label {
+        color: #573b8a;
+        transform: scale(1);
+    }
+}
+
+/* Small Mobile (480px - 600px) */
+@media screen and (min-width: 480px) and (max-width: 600px) {
+    .main {
+        width: 90vw;
+        max-width: 400px;
+    }
+
+    label {
+        font-size: 2em;
+        margin: 40px 20px;
+    }
+
+    input,
+    button {
+        width: 80%;
+    }
+}
+
+/* Tablet Portrait (601px - 768px) */
+@media screen and (min-width: 601px) and (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main {
+        width: 80vw;
+        height: auto;
+        min-height: 600px;
+        max-width: 500px;
+        border-radius: 10px;
+        box-shadow: 5px 20px 50px rgba(0,0,0,0.3);
+        background: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+    }
+
+    .signup,
+    .login {
+        width: 100%;
+        background: #fff;
+        border-radius: 10px;
+        padding: 30px;
+        box-sizing: border-box;
+    }
+
+    .signup {
+        background: linear-gradient(to bottom, #0f0c29, #302b63);
+    }
+
+    /* Adjust transform for tablets */
+    .login {
+        transform: translateY(-150px);
+    }
+
+    #chk:checked ~ .login {
+        transform: translateY(-450px);
+    }
+
+    label {
+        margin-top: 30px;
+        font-size: 2em;
+    }
+
+    input,
+    button {
+        width: 80%;
+        max-width: 350px;
+    }
+}
+
+/* Tablet Landscape and up (769px+) */
+@media screen and (min-width: 769px) {
+    .main {
+        width: 350px;
+        height: 500px;
+    }
+}
+
+/* Landscape orientation on small screens */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+        overflow-y: auto;
+    }
+
+    .main {
+        margin: 20px auto;
+        min-height: auto;
+    }
+
+    .signup,
+    .login {
+        min-height: auto;
+        padding: 20px;
+    }
+
+    label {
+        margin: 15px 10px;
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .main {
+        background-size: cover;
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
